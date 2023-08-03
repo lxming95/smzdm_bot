@@ -7,6 +7,7 @@ from notify.notify import NotifyBot
 from utils.file_helper import TomlHelper
 from utils.smzdm_bot import SmzdmBot
 from utils.smzdm_tasks import SmzdmTasks
+from utils.hlh_checkin import hlh
 
 CURRENT_PATH = Path(__file__).parent.resolve()
 CONFIG_FILE = Path(CURRENT_PATH, "config/config.toml")
@@ -56,6 +57,8 @@ def main():
                 msg += tasks.all_reward()
                 tasks.extra_reward()
                 msg += tasks.lottery()
+                hlh=hlh(**kwargs)
+                msg += hlh.checkin()
             except Exception as e:
                 logger.error(e)
                 continue
@@ -71,6 +74,8 @@ def main():
         msg += tasks.all_reward()
         tasks.extra_reward()
         msg += tasks.lottery()
+        hlh=hlh(**kwargs)
+        msg += hlh.checkin()
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
