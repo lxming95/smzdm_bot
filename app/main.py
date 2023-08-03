@@ -57,7 +57,7 @@ def main():
                 msg += tasks.all_reward()
                 tasks.extra_reward()
                 msg += tasks.lottery()
-                hlh=hlh(**kwargs)
+                hlh=hlh(**config)
                 msg += hlh.checkin()
             except Exception as e:
                 logger.error(e)
@@ -74,7 +74,7 @@ def main():
         msg += tasks.all_reward()
         tasks.extra_reward()
         msg += tasks.lottery()
-        hlh=hlh(**kwargs)
+        hlh=hlh(**conf_kwargs)
         msg += hlh.checkin()
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
