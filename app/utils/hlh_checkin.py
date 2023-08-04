@@ -33,6 +33,7 @@ class hlh:
         }
         res = requests.post(url_login, headers=headers, data=str(data)).json()
         # print('login --->', res)
+        logger.info(f'--{res} --->')
         if 'data' not in res:
             return ''
         else:
