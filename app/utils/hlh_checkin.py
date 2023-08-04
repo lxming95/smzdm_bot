@@ -27,11 +27,12 @@ class hlh:
             'User-Agent': r'Mozilla/5.0 (iPhone; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.31(0x18001f37) NetType/WIFI Language/zh_CN',
             'Referer': r'https://servicewechat.com/wx597e17303800393c/40/page-frame.html',
         }
-        data = {
+        data1 = {
             "requestId": "v5.app.member.wechat",
             "openId": self.openid,
         }
-        res = requests.post(url_login, headers=headers, data=str(data)).json()
+        logger.info(f'--{str(data1)} --->')
+        res = requests.post(url_login, headers=headers, data=str(data1)).json()
         # print('login --->', res)
         logger.info(f'--{res} --->')
         if 'data' not in res:
