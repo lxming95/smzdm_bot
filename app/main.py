@@ -76,6 +76,7 @@ def main():
         tasks.extra_reward()
         msg += tasks.lottery()
         logger.info("Start hlh check in")
+        logger.info(f"===== Skip task for user: {conf_kwargs} =====")
         hl=hlh(**conf_kwargs)
         msg += hl.checkin()
         NotifyBot(content=msg, **conf_kwargs)
