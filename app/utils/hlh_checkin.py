@@ -31,10 +31,9 @@ class hlh:
             "requestId": "v5.app.member.wechat",
             "openId": self.openid,
         }
-        logger.info(f'--{str(data1)} --->')
+        logger.info(f'--{data1} --->')
         res = requests.post(url_login, headers=headers, data=str(data1)).json()
         # print('login --->', res)
-        logger.info(f'--{res} --->')
         if 'data' not in res:
             return ''
         else:
