@@ -11,8 +11,8 @@ from loguru import logger
 
 class hlh:
 
-    def __init__(self, openId: str, **kwargs):
-        self.openId = openId
+    def __init__(self, OPENID: str, **kwargs):
+        self.openid = OPENID
 
 
     def get_cookie(self):
@@ -29,11 +29,10 @@ class hlh:
         }
         data = {
             "requestId": "v5.app.member.wechat",
-            "openId": self.openId,
+            "openId": self.openid,
         }
         res = requests.post(url_login, headers=headers, data=str(data)).json()
         # print('login --->', res)
-        logger.info('login --->'+ res)
         if 'data' not in res:
             return ''
         else:
