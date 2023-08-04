@@ -1,3 +1,10 @@
+#!/usr/bin/python3.7
+# -*- coding: utf-8 -*-
+# @Time    : 2023/8/3 15:09
+# @Author  : lxm
+# @File    : hlh_checkin.py
+
+
 import time
 import requests
 
