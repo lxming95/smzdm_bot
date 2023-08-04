@@ -58,8 +58,8 @@ def main():
                 msg += tasks.all_reward()
                 tasks.extra_reward()
                 msg += tasks.lottery()
-                hlh=hlh(**config)
-                msg += hlh.checkin()
+                hl=hlh(**config)
+                msg += hl.checkin()
             except Exception as e:
                 logger.error(e)
                 continue
@@ -76,8 +76,8 @@ def main():
         tasks.extra_reward()
         msg += tasks.lottery()
         logger.info("Start hlh check in")
-        hlh=hlh(**conf_kwargs)
-        msg += hlh.checkin()
+        hl=hlh(**conf_kwargs)
+        msg += hl.checkin()
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
