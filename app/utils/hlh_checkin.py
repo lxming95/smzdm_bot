@@ -54,7 +54,7 @@ class hlh:
         }
         res = requests.post(url_checkin, headers=headers, data='null').json()
         print('checkin --->', res)
-        if res['errorcode'] != '0' and res['errorcode'] != '37115':
+        if len(res['errorcode']) != 0 and res['errorcode'] != '37115':
             raise Exception(res['msg'])
         # if '成功' in res['msg'] or '已经签到了' in res['msg']:
         #     return res
