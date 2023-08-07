@@ -47,7 +47,7 @@ def hlh_checkin_all(openids: dict) -> str:
     msg = ''
     for k, v in openids.items():
         msg+=f"==========用户{k}===========\n"
-        hl = hlh(openId=v)
+        hl = hlh(OPENID=v)
         msg+=hl.checkin()
     return msg
 
