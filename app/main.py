@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 from pathlib import Path
 
 from loguru import logger
@@ -84,11 +85,11 @@ def main():
         msg += tasks.all_reward()
         tasks.extra_reward()
         msg += tasks.lottery()
-        op=conf_kwargs["OPENIDS"]
-        logger.info(f"Start hlh check in  {op}")
+        logger.info(f"Start hlh check in ")
         # hl=hlh(**conf_kwargs)
         # msg += hl.checkin()
-        msg += hlh_checkin_all(dict(conf_kwargs["OPENIDS"]))
+        opids=json.loads(conf_kwargs["OPENIDS"])
+        msg += hlh_checkin_all(opids)
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
