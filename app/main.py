@@ -1,8 +1,6 @@
 import os
 import sys
-import json
 from pathlib import Path
-
 from loguru import logger
 from notify.notify import NotifyBot
 from utils.file_helper import TomlHelper
@@ -43,9 +41,11 @@ def load_conf():
         sys.exit(1)
     return conf_kwargs
 
-def hlh_checkin_all(openids: dict) -> str:
+def hlh_checkin_all(openids: str) -> str:
+    import json
+    opids=json.loads(conf_kwargs["OPENIDS"])
     msg = ''
-    for k, v in openids.items():
+    for k, v in opids.items():
         msg+=f"==========用户{k}===========\n"
         hl = hlh(OPENID=v)
         msg+=hl.checkin()
@@ -86,10 +86,7 @@ def main():
         tasks.extra_reward()
         msg += tasks.lottery()
         logger.info(f"Start hlh check in ")
-        # hl=hlh(**conf_kwargs)
-        # msg += hl.checkin()
-        opids=json.loads(conf_kwargs["OPENIDS"])
-        msg += hlh_checkin_all(opids)
+        msg += hlh_checkin_all(conf_kwargs["OPENIDS"])
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
