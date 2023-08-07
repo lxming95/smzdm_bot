@@ -32,7 +32,7 @@ def load_conf():
             "TG_BOT_TOKEN": os.environ.get("TG_BOT_TOKEN", None),
             "TG_USER_ID": os.environ.get("TG_USER_ID", None),
             "TG_BOT_API": os.environ.get("TG_BOT_API", None),
-            "OPENID": os.environ.get("HLH_OPENID"),
+            "OPENIDS": os.environ.get("HLH_OPENID"),
         }
         st=str(os.environ.get("HLH_OPENID"))
         logger.info(f"Get {st}")
@@ -42,6 +42,13 @@ def load_conf():
         sys.exit(1)
     return conf_kwargs
 
+def hlh_checkin_all(openids: dict) -> str:
+    msg = ''
+    for k, v in openids.items():
+        msg+=f"==========用户{k}===========\n"
+        hl = hlh(openId=v)
+        msg+=hl.checkin()
+    return msg
 
 def main():
     conf_kwargs = load_conf()
@@ -78,14 +85,13 @@ def main():
         tasks.extra_reward()
         msg += tasks.lottery()
         logger.info("Start hlh check in")
-        logger.info(f"===== Skip task for user: {conf_kwargs} =====")
-        hl=hlh(**conf_kwargs)
-        msg += hl.checkin()
+        # hl=hlh(**conf_kwargs)
+        # msg += hl.checkin()
+        msg += hlh_checkin_all(conf_kwargs["OPENIDS"])
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()
