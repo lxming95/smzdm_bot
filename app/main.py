@@ -84,7 +84,8 @@ def main():
         msg += tasks.all_reward()
         tasks.extra_reward()
         msg += tasks.lottery()
-        logger.info(f"Start hlh check in  {conf_kwargs["OPENIDS"]}")
+        op=conf_kwargs["OPENIDS"]
+        logger.info(f"Start hlh check in  {op}")
         # hl=hlh(**conf_kwargs)
         # msg += hl.checkin()
         msg += hlh_checkin_all(dict(conf_kwargs["OPENIDS"]))
