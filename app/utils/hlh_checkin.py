@@ -53,13 +53,10 @@ class hlh:
             'Referer': 'https://servicewechat.com/wx597e17303800393c/40/page-frame.html'
         }
         res = requests.post(url_checkin, headers=headers, data='null').json()
-        print('checkin --->', res)
+        # print('checkin --->', res)
         if len(res['errorcode']) != 0 and res['errorcode'] != '37115':
-            raise Exception(res['msg'])
-        # if '成功' in res['msg'] or '已经签到了' in res['msg']:
-        #     return res
-        # else:
-        msg_res=res['msg']
-        data=res['data']
-        msg=f"""-------------------\n欢乐汇签到：{msg_res}\n签到信息：{data}\n-------------------\n"""
+            return res
+        msg_res = res['msg']
+        data = "获得"+res['integralamount']+"积分" if res.get('integralamount') is not None else "重复签到"
+        msg = f"""欢乐汇签到：{msg_res}\n签到信息：{data}\n"""
         return msg
