@@ -86,7 +86,7 @@ def main():
         tasks.extra_reward()
         msg += tasks.lottery()
         logger.info(f"Start hlh check in ")
-        msg += hlh_checkin_all(conf_kwargs["OPENIDS"])
+        msg += hlh_checkin_all(**conf_kwargs["OPENIDS"])
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
