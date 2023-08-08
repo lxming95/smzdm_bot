@@ -43,7 +43,7 @@ def load_conf():
 
 def hlh_checkin_all(openids: str) -> str:
     import json
-    opids=json.loads(conf_kwargs["OPENIDS"])
+    opids=json.loads(openids)
     msg = ''
     for k, v in opids.items():
         msg+=f"==========用户{k}===========\n"
@@ -86,7 +86,7 @@ def main():
         tasks.extra_reward()
         msg += tasks.lottery()
         logger.info(f"Start hlh check in ")
-        msg += hlh_checkin_all(**conf_kwargs["OPENIDS"])
+        msg += hlh_checkin_all(conf_kwargs["OPENIDS"])
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
