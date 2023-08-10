@@ -54,6 +54,7 @@ class hlh:
         }
         res = requests.post(url_checkin, headers=headers, data='null').json()
         # print('checkin --->', res)
+        logger.info(f'--{res} --->')
         if len(res['errorcode']) != 0 and res['errorcode'] != '37115':
             return res
         msg_res = res['msg']
