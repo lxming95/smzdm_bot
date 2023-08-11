@@ -58,6 +58,6 @@ class hlh:
         if len(res['errorcode']) != 0 and res['errorcode'] != '37115':
             return res
         msg_res = res['msg']
-        data = "获得"+res['integralamount']+"积分" if res.get('integralamount') else "重复签到"
+        data = "获得"+res["data"]['integralamount']+"积分" if res["data"].get('integralamount') else "重复签到"
         msg = f"""欢乐汇签到：{msg_res}\n签到信息：{data}\n"""
         return msg
