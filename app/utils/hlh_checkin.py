@@ -57,7 +57,7 @@ class hlh:
         logger.info(f'--{res} --->')
         if len(res['errorcode']) != 0 and res['errorcode'] != '37115':
             return res
-        msg_res = res['msg'] if res['msg'] else "签到成功”
+        msg_res = res["msg"] if res["msg"] else "签到成功”
         data = "获得"+str(res["data"]['integralamount'])+"积分" if res["data"] else "重复签到"
         msg = f"""欢乐汇签到：{msg_res}\n签到信息：{data}\n"""
         return msg
