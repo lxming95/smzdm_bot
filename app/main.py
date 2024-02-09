@@ -87,6 +87,8 @@ def main():
         msg += tasks.lottery()
         logger.info(f"Start hlh check in ")
         msg += hlh_checkin_all(conf_kwargs["OPENIDS"])
+        oids=conf_kwargs["OPENIDS"]
+        logger.info(f" hlh check {oids} ")
         NotifyBot(content=msg, **conf_kwargs)
     if msg is None or "Fail to login in" in msg:
         logger.error("Fail the Github action job")
