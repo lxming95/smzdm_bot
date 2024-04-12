@@ -118,6 +118,8 @@ class SmzdmTasks:
     def extra_reward(self):
         continue_checkin_reward_show = False
         userdata_v2 = self._show_view_v2()
+        if not userdata_v2:
+            return
         try:
             logger.info(f"userdata_v2:{userdata_v2}")
             for item in userdata_v2["data"]["rows"]:
