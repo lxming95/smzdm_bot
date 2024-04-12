@@ -137,5 +137,6 @@ class SmzdmTasks:
     def _show_view_v2(self):
         url = "https://user-api.smzdm.com/checkin/show_view_v2"
         resp = self.bot.request("POST", url)
+        logger.info(f"resp:{resp.text}")
         if resp.status_code == 200 and int(resp.json()["error_code"]) == 0:
             return resp.json()
