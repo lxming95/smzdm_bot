@@ -18,14 +18,12 @@ class hlh:
     def get_cookie(self):
         url_login = r'https://sjzhlh.com/api/Token/WXVIPLogin'
         headers = {
-            #'Connection': 'keep-alive',
             'buildingid': '01',
             'app_id': 'api.app.member',
-            #'app_time': str(time.strftime('%Y%m%d%H%M%S')),
             'Accept-Encoding': 'gzip,compress,br,deflate',
             'Content-Type': 'application/json',
             'User-Agent': r'Mozilla/5.0 (iPhone; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.31(0x18001f37) NetType/WIFI Language/zh_CN',
-            'Referer': r'https://servicewechat.com/wx597e17303800393c/40/page-frame.html',
+            'Referer': r'https://servicewechat.com/wx597e17303800393c/41/page-frame.html',
         }
         data1 = {
             "requestId": "v5.app.member.wechat",
