@@ -119,6 +119,7 @@ class SmzdmTasks:
         continue_checkin_reward_show = False
         userdata_v2 = self._show_view_v2()
         try:
+            logger.info(f"userdata_v2:{userdata_v2}")
             for item in userdata_v2["data"]["rows"]:
                 if item["cell_type"] == "18001":
                     continue_checkin_reward_show = item["cell_data"][
